@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>ПРЕСТИЖ — Водитель</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Личный кабинет водителя</h1>
+    <div class="card" id="profile">
+      <div class="row"><span>Имя</span><strong id="name">—</strong></div>
+      <div class="row"><span>Телефон</span><strong id="phone">—</strong></div>
+      <div class="row"><span>Марка авто</span><strong id="car">—</strong></div>
+      <div class="row"><span>Гос номер</span><strong id="plate">—</strong></div>
+      <div class="row"><span>Статус</span><strong>Водитель</strong></div>
+    </div>
+
+    <div class="card">
+      <div class="row"><span>Текущий заказ</span><strong id="order-status">Нет</strong></div>
+      <button id="call-client" class="btn" disabled>📞 Позвать клиента</button>
+      <button id="complete" class="btn" disabled>🏁 Завершить заказ</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+<style>
+  body{margin:0;background:#0b0b0b;color:#fff;font:16px/1.4 system-ui,Segoe UI,Roboto,Arial}
+  .container{padding:16px}
+  h1{margin:8px 0 16px;color:#ffd400}
+  .card{background:#1a1a1a;border-radius:12px;padding:12px 14px;margin:12px 0;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+  .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #333}
+  .row:last-child{border-bottom:0}
+  .btn{width:100%;padding:14px 16px;margin:8px 0;border:none;border-radius:10px;background:#ffd400;color:#121212;font-weight:700}
+</style>
+</html>
+
+
