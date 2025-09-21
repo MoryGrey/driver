@@ -1,0 +1,768 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: #1a1a1a;
+    position: relative;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Главная страница с анимацией */
+#welcomePage {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-content {
+    max-width: 300px;
+}
+
+.logo-animation {
+    margin-bottom: 40px;
+}
+
+.taxi-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.company-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.company-name.prestige {
+    color: #FFD700;
+    font-size: 42px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.welcome-text {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+}
+
+.btn-register-main {
+    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255,107,53,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-register-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255,107,53,0.4);
+}
+
+/* Страница заказов */
+.header {
+    background: #1a1a1a;
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.profile-btn, .menu-btn {
+    background: #2d2d2d;
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover, .menu-btn:hover {
+    background: #4CAF50;
+    transform: scale(1.1);
+}
+
+/* Заглушка карты */
+.map-placeholder {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+    border-radius: 15px;
+    margin: 20px 0;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.map-content {
+    position: relative;
+    z-index: 1;
+}
+
+.map-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.map-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.map-content p {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.map-animation {
+    margin-top: 20px;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.loading-dots span {
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: loading 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.content {
+    padding: 0 10px;
+}
+
+.location-section {
+    margin-bottom: 30px;
+}
+
+.location-input {
+    display: flex;
+    align-items: center;
+    background: #2d2d2d;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.location-input:focus-within {
+    border-color: #4CAF50;
+}
+
+.location-icon {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.location-input input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    flex: 1;
+    outline: none;
+}
+
+.location-input input::placeholder {
+    color: #888;
+}
+
+.tariff-section {
+    margin-bottom: 30px;
+}
+
+.tariff-section h3 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.tariff-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.tariff-btn {
+    background: #2d2d2d;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.tariff-btn:hover {
+    background: #3d3d3d;
+}
+
+.tariff-btn.active {
+    border-color: #4CAF50;
+    background: #2d4a2d;
+}
+
+.tariff-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.tariff-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tariff-price {
+    font-size: 16px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.payment-section {
+    margin-bottom: 30px;
+}
+
+.payment-section h3 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-btn {
+    background: #2d2d2d;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-btn:hover {
+    background: #3d3d3d;
+}
+
+.payment-btn.active {
+    border-color: #4CAF50;
+    background: #2d4a2d;
+}
+
+.payment-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-primary, .btn-secondary, .btn-confirm, .btn-register {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+.btn-secondary {
+    background: #555;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #666;
+}
+
+.btn-confirm {
+    background: #FF6B35;
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.btn-confirm:hover {
+    background: #e55a2b;
+}
+
+.btn-register {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-register:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+}
+
+.register-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Профиль пользователя */
+.profile-card {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4CAF50, #FFD700, #4CAF50);
+}
+
+.profile-avatar {
+    position: relative;
+}
+
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    border: 3px solid #2d2d2d;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.profile-info h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.user-phone {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #1a1a1a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: #2d2d2d;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: #3d3d3d;
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.loyalty-section {
+    margin-bottom: 25px;
+}
+
+.loyalty-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.loyalty-card {
+    background: #2d2d2d;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.loyalty-progress {
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    background: #444;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.progress-text {
+    color: #4CAF50;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.loyalty-description {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0;
+}
+
+.menu-section {
+    background: #2d2d2d;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item:hover {
+    background: #3d3d3d;
+}
+
+.menu-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    width: 24px;
+    text-align: center;
+}
+
+.menu-text {
+    flex: 1;
+    font-size: 16px;
+    color: #fff;
+}
+
+.menu-arrow {
+    font-size: 18px;
+    color: #888;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background: #2d2d2d;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    border: 2px solid #4CAF50;
+}
+
+.modal-content h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.modal-content p {
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* PWA стили */
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+.install-prompt button {
+    background: white;
+    color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    .page {
+        padding: 15px;
+    }
+    
+    .tariff-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700;
+    }
+    to {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes loading {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.page.active {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Скрытие элементов */
+.hidden {
+    display: none !important;
+}
